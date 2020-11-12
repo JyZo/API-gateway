@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Addcontroller {
 	@GetMapping("/adds")
 	public String home() {
-		return "index.html";
+		return "add test";
 	}
 	
 	}
