@@ -4,6 +4,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+import org.springframework.context.annotation.Bean;
+
+import cal.filter.Errorfilter;
+import cal.filter.Postfilter;
+import cal.filter.Prefilter;
+import cal.filter.Routefilter;
 
 @EnableZuulProxy
 @EnableDiscoveryClient
@@ -14,4 +20,23 @@ public class ZuulApplication {
 		SpringApplication.run(ZuulApplication.class, args);
 	}
 
+	@Bean
+    public Prefilter preFilter() {
+        return new Prefilter();
+    }
+    
+	@Bean
+	public Postfilter postFilter() {
+		return new Postfilter();
+	}
+    
+    @Bean
+    public Errorfilter errorFilter() {
+        return new Errorfilter();
+    }
+    
+    @Bean
+    public Routefilter routeFilter() {
+        return new Routefilter();
+    }
 }
