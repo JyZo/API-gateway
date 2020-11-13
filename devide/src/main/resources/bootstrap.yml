@@ -1,0 +1,12 @@
+server:
+  port: 9003
+
+spring:
+  application:
+    name: devide
+  profiles:
+    active: devide
+  cloud:
+    config:
+      uri: http://localhost:8888
+      

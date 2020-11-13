@@ -1,8 +1,12 @@
-management:
-  endpoints:
-    web:
-      exposure:
-        include: refresh
+server:
+  port: 9002
+
+spring:
+  application:
+    name: multiplation
+  profiles:
+    active: multiplation
+
 eureka:
   instance:
     prefer-ip-address: true
