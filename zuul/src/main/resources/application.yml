@@ -26,8 +26,27 @@ zuul:
       serviceId: divide
       stripPrefix: false
     ribbon-isolation-strategy: thread
-    thread-pool:
-   
+  ratelimit:
+    key-prefix: true    enabled: true
+    repository: JPA
+    policy-list:      add:
+        - limit: 5
+          refresh-interval: 60
+          type:          - origin
+      substract:
+        - limit: 10
+          refresh-interval: 50
+          type:          - origin
+          - user
+      multiplation:
+        - limit: 8
+          refresh-interval: 30
+          type:          - origin
+          - url
+      devide:
+        - limit: 13
+          refresh-interval: 40
+          
       
 eureka:
   instance:
