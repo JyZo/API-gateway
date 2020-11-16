@@ -10,42 +10,23 @@ server:
 zuul:
   routes:
     add:
-      path: /add/**
+      path: /cal/adds/**
       serviceId: add
       stripPrefix: false
     substract: 
-      path: /substract/**
+      path: /cal/subs/**
       serviceId: substract
       stripPrefix: false
     multiplation:
-      path: /multiplation/**
+      path: /cal/muls/**
       serviceId: multiplation
       stripPrefix: false
     devide:
-      path: /divide/**
-      serviceId: divide
+      path: /cal/devs/**
+      serviceId: devide
       stripPrefix: false
-    ribbon-isolation-strategy: thread
-  ratelimit:
-    key-prefix: true    enabled: true
-    repository: JPA
-    policy-list:      add:
-        - limit: 5
-          refresh-interval: 60
-          type:          - origin
-      substract:
-        - limit: 10
-          refresh-interval: 50
-          type:          - origin
-          - user
-      multiplation:
-        - limit: 8
-          refresh-interval: 30
-          type:          - origin
-          - url
-      devide:
-        - limit: 13
-          refresh-interval: 40
+    
+  
           
       
 eureka:

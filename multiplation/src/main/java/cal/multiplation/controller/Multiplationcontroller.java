@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Multiplationcontroller {
 	@GetMapping("/muls")
 	public String home() {
-		return "add test";
+		return "multiplation test";
 	}
 	
 	}

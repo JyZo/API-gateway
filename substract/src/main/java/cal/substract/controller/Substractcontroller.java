@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Substractcontroller {
 	@GetMapping("/subs")
 	public String home() {
-		return "add test";
+		return "substract test";
 	}
 	
 	}
