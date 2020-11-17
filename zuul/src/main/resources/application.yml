@@ -1,8 +1,9 @@
 spring:
  application:
-  name: zuul
-  
-  
+  name: zuul redis:
+   host: localhost
+   port: 6379
+ 
 server:
   port: 9999
   
@@ -25,7 +26,37 @@ zuul:
       path: /cal/devs/**
       serviceId: devide
       stripPrefix: false
-    
+  ribbon-isolation-strategy: thread
+  thread-pool:
+    use-separate-thread-pools: true
+    thread-pool-key-prefix: zuul-
+     
+  ratelimit:
+    key-prefix: true
+    enabled: true
+    repository: REDIS
+    policy-list:
+      add:
+        - limit: 5
+          refresh-interval: 60
+          type:
+          - origin
+      substract:
+        - limit: 10
+          refresh-interval: 50
+          type:
+          - origin
+          - user
+      multiplation:
+        - limit: 8
+          refresh-interval: 30
+          type:
+          - origin
+          - url
+      devide:
+        - limit: 13
+          refresh-interval: 40  
+          type:          - origin
   
           
       

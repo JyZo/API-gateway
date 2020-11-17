@@ -10,7 +10,7 @@ import com.netflix.hystrix.exception.HystrixTimeoutException;
 @Component
 public class AddServiceFallback implements FallbackProvider{
 
-	private static final String DEFAULT_MESSAGE = "Weather information is not available.";
+	private static final String DEFAULT_MESSAGE = "add service failed";
 	
 	@Override
 	public String getRoute() {
@@ -20,11 +20,10 @@ public class AddServiceFallback implements FallbackProvider{
 
 	@Override
 	public ClientHttpResponse fallbackResponse(String route, Throwable cause) {
-		// TODO Auto-generated method stub
-		if (cause instanceof HystrixTimeoutException) {
-			return new GatewayClientHttpResponse(HttpStatus.INTERNAL_SERVER_ERROR,DEFAULT_MESSAGE);
-		}
-		return null;
+        if (cause instanceof HystrixTimeoutException) {
+            return new GatewayClientResponse(HttpStatus.GATEWAY_TIMEOUT, DEFAULT_MESSAGE);
+        } else {
+            return new GatewayClientResponse(HttpStatus.INTERNAL_SERVER_ERROR, DEFAULT_MESSAGE);
+        }
 	}
-
 }
