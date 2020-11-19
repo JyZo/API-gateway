@@ -12,5 +12,4 @@ public class Devidecontroller {
 		return "devide test";
 	}
 	
-	}
-
+}

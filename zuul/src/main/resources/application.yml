@@ -9,6 +9,7 @@ server:
   
   
 zuul:
+  retryable: true
   routes:
     add:
       path: /cal/adds/**
@@ -37,28 +38,28 @@ zuul:
     repository: REDIS
     policy-list:
       add:
-        - limit: 5
-          refresh-interval: 60
+        - limit: 10
+          refresh-interval: 20
           type:
           - origin
       substract:
         - limit: 10
-          refresh-interval: 50
+          refresh-interval: 20
           type:
           - origin
           - user
       multiplation:
         - limit: 8
-          refresh-interval: 30
+          refresh-interval: 20
           type:
           - origin
           - url
       devide:
         - limit: 13
-          refresh-interval: 40  
+          refresh-interval: 20
           type:          - origin
   
-          
+      
       
 eureka:
   instance:
@@ -71,26 +72,47 @@ eureka:
 
 hystrix:
   command:
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 1000
-    product:
+   add:
       execution:
         isolation:
           thread:
             timeoutInMilliseconds: 10000
-  threadpool:
-    zuul-product:
-      coreSize: 30
-      maximumSize: 100
-      allowMaximumSizeToDivergeFromCoreSize: true
-    zuul-display:
-      coreSize: 30
-      maximumSize: 100
-      allowMaximumSizeToDivergeFromCoreSize: true
+   substract:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+   multiplation:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+   devide:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
 
+threadpool:
+    zuul-add:
+      coreSize: 30
+      maximumSize: 100
+      allowMaximumSizeToDivergeFromCoreSize: true
+    zuul-substract:
+      coreSize: 30
+      maximumSize: 100
+      allowMaximumSizeToDivergeFromCoreSize: true
+    zuul-multiplation:
+      coreSize: 30
+      maximumSize: 100
+      allowMaximumSizeToDivergeFromCoreSize: true
+    zuul-devide:
+      coreSize: 30
+      maximumSize: 100
+      allowMaximumSizeToDivergeFromCoreSize: true
+ 
+           
+ 
 add: 
   ribbon:
     MaxAutoRetriesNextServer: 1

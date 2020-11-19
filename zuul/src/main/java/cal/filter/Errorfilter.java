@@ -16,7 +16,7 @@ public class Errorfilter extends ZuulFilter{
 	public Object run() throws ZuulException {
 		// TODO Auto-generated method stub
 		Throwable throwable = RequestContext.getCurrentContext().getThrowable();
-        System.out.printf("Exception was thrown in filters: ", throwable);
+        System.out.printf("Error filter run!!", throwable);
         return null;
 	}
 
