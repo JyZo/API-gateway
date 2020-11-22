@@ -5,7 +5,9 @@ spring:
   application:
     name: multiplation
   profiles:
-    active: multiplation
+    active: 
+    - multiplation
+    - eureka
   cloud:
     config:
       uri: http://localhost:8888

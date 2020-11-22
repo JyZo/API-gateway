@@ -5,7 +5,9 @@ spring:
   application:
     name: substract
   profiles:
-    active: substract
+    active: 
+    - substract
+    - eureka
   cloud:
     config:
       uri: http://localhost:8888

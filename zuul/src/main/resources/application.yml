@@ -12,19 +12,19 @@ zuul:
   retryable: true
   routes:
     add:
-      path: /cal/adds/**
+      path: /adds/**
       serviceId: add
       stripPrefix: false
     substract: 
-      path: /cal/subs/**
+      path: /subs/**
       serviceId: substract
       stripPrefix: false
     multiplation:
-      path: /cal/muls/**
+      path: /muls/**
       serviceId: multiplation
       stripPrefix: false
     devide:
-      path: /cal/devs/**
+      path: /devs/**
       serviceId: devide
       stripPrefix: false
   ribbon-isolation-strategy: thread
@@ -144,5 +144,9 @@ devide:
     ConnectTimeout: 1000
     MaxTotalConnections: 300
     MaxConnectionsPerHost: 100
+    
+logging:
+   level:
+      com.netflix.loadbalancer.LoadBalancerContext: debug
       
       

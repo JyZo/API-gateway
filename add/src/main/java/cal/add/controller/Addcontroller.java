@@ -2,14 +2,24 @@ package cal.add.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/cal")
+@RequestMapping("/adds")
 public class Addcontroller {
-	@GetMapping("/adds")
+	@GetMapping("/test")
 	public String home() {
 		return "add test";
 	}
 	
+	@GetMapping("/add")
+	public Object add(@RequestParam(value="num1",required = false, defaultValue = "1")int num1,
+			@RequestParam(value="num2",required = false,defaultValue = "1")int num2) {
+		Result result= new Result(num1,num2);
+		if(num1<0 | num2<0) {
+			return "don't minus";
+		}
+		return "Add:"+result;
+	}
 }
