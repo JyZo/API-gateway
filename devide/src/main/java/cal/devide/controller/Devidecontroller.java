@@ -5,12 +5,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import cal.add.controller.Result;
+
 
 @RestController
-@RequestMapping("/cal")
+@RequestMapping("/devs")
 public class Devidecontroller {
-	@GetMapping("/devs")
+	@GetMapping("/test")
 	public String home() {
 		return "devide test";
 	}
@@ -18,8 +18,21 @@ public class Devidecontroller {
 	@GetMapping("/dev")
 	public Object add(@RequestParam(value="num1",required = false, defaultValue = "1")int num1,
 			@RequestParam(value="num2",required = false,defaultValue = "1")int num2) {
-		Result result= new Result(num1,num2);
 		
-		return "Devide"+result.toString();
+		if(num1>=num2) {
+			Result result= new Result(num1,num2);
+			return "Devide:"+result;
+		}else if(num1<num2) {
+			int temp=0;
+			temp=num1;
+			num1=num2;
+			num2=temp;
+			Result result= new Result(num1,num2);
+			return "Devide:"+result;
+		}else if(num1==0 | num2 ==0) {
+			return "not devide";
+		}
+		return null;
+		
 	}
 }
