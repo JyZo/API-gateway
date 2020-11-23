@@ -7,9 +7,15 @@ public class Result{
 	
 	public Result(int num1, int num2) {
 		super();
+		if(num1>=num2) {
 		this.num1 = num1;
 		this.num2 = num2;
 		this.result = num1/num2;
+		}else if(num2>num1){
+		this.num2 = num2;
+		this.num1 = num1;
+		this.result = num2/num1;
+		}
 	}
 	
 	

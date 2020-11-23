@@ -25,4 +25,7 @@ public class Multiplationcontroller {
 		}
 		return "Multiplation:"+result;
 	}
+	
+	
+	
 }
