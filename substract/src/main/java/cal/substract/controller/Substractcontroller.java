@@ -18,7 +18,10 @@ public class Substractcontroller {
 	public Object add(@RequestParam(value="num1",required = false, defaultValue = "1")int num1,
 			@RequestParam(value="num2",required = false,defaultValue = "1")int num2) {
 		
-		if(num1>=num2) {
+		if(num1<0 | num2<0) {
+			return "dont't minus";
+		}
+		else if(num1>=num2) {
 			Result result = new Result(num1,num2);
 			return "Substract:"+result;
 		}else if(num1<num2) {

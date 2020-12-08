@@ -17,9 +17,9 @@ public class Addcontroller {
 	public Object add(@RequestParam(value="num1",required = false, defaultValue = "1")int num1,
 			@RequestParam(value="num2",required = false,defaultValue = "1")int num2) {
 		Result result= new Result(num1,num2);
-		if(num1<0 | num2<0) {
+		if(num1<0 | num2<0 | num1+num2<0) {
 			return "don't minus";
-		}else if(num1+num2<10000) {
+		}else if(num1+num2>=10000) {
 			return "10000 over!!";
 		}
 		return "Add:"+result;
